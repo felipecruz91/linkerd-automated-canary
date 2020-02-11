@@ -40,6 +40,10 @@ $ kubectl apply -f canary.yaml
 # Perform a first deployment update (this server will return 200 OK) 
 $ kubectl -n test set image deployment/go-server go-server-ctr=felipecruz/go-server:ok
 
+# Behind the scenes, Flagger is splitting traffic between the primary and canary backends by updating the traffic split resource. To watch how this configuration changes over the rollout, run:
+
+$ kubectl -n test get trafficsplit podinfo -o yaml
+
 # Monitor the canary deployment via the Linkerd dashboard or the CLI
 $ kubectl -n test get canary -o wide
 
