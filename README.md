@@ -42,6 +42,7 @@ $ kubectl -n test set image deployment/go-server go-server-ctr=felipecruz/go-ser
 
 # Perform a second deployment update (this image will return 500 Internal Server Error on purpose to simulate a bug)
 $ kubectl -n test set image deployment/go-server go-server-ctr=felipecruz/go-server:error                                      
+```
 
 ## References
 
