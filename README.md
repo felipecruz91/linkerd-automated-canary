@@ -40,8 +40,14 @@ $ kubectl apply -f canary.yaml
 # Perform a first deployment update (this server will return 200 OK) 
 $ kubectl -n test set image deployment/go-server go-server-ctr=felipecruz/go-server:ok
 
+# Monitor the canary deployment via the Linkerd dashboard or the CLI
+$ kubectl -n test get canary -o wide
+
 # Perform a second deployment update (this image will return 500 Internal Server Error on purpose to simulate a bug)
-$ kubectl -n test set image deployment/go-server go-server-ctr=felipecruz/go-server:error                                      
+$ kubectl -n test set image deployment/go-server go-server-ctr=felipecruz/go-server:error        
+
+# Monitor the canary deployment via the Linkerd dashboard or the CLI
+$ kubectl -n test get canary -o wide
 ```
 
 ## References
