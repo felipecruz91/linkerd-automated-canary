@@ -1,5 +1,7 @@
 # linkerd-automated-canary
 
+![linkerd.PNG](./images/linkerd.PNG)
+
 ## Install Linkerd
 https://linkerd.io/2/getting-started/
 
