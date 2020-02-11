@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: load
+  name: load
+  namespace: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: load
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: load
+    spec:
+      containers:
+      - args:
+        - -c
+        - "1"
+        - -q
+        - "10"
+        - -z
+        - 30m
+        - http://go-server:8080
+        image: ricoli/hey
+        name: load-generator
+        resources: {}            

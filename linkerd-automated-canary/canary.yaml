@@ -1,0 +1,31 @@
+apiVersion: flagger.app/v1alpha3
+kind: Canary
+metadata:
+  name: go-server
+  namespace: test
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: go-server
+  # the maximum time in seconds for the canary deployment
+  # to make progress before it is rollback (default 600s)
+  progressDeadlineSeconds: 60    
+  service:
+    # ClusterIP port number
+    port: 8080
+  canaryAnalysis:
+    # schedule interval (default 60s)
+    interval: 10s
+    # max number of failed metric checks before rollback
+    threshold: 5
+    # canary increment step
+    # percentage (0-100)    
+    stepWeight: 10
+    # Linkerd Prometheus checks    
+    metrics:
+    - name: request-success-rate
+      # minimum req success rate (non 5xx responses)
+      # percentage (0-100)    
+      threshold: 99
+      interval: 1m
