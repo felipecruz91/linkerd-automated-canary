@@ -2,6 +2,9 @@
 
 ![linkerd.PNG](./images/linkerd.PNG)
 
+To see the dashboard, run `linkerd dashboard --address=0.0.0.0` and access `http://<YOUR_PUBLIC_IP_ADDR>:50750/`.
+If you get a security error when trying to reach the dashboard, then have a look at: https://linkerd.io/2/tasks/exposing-dashboard/#tweaking-host-requirement
+
 ## Install Linkerd
 https://linkerd.io/2/getting-started/
 
